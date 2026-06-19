@@ -63,6 +63,12 @@ variable "environment" {
   }
 }
 
+variable "region" {
+  description = "AWS region for the demo account deployment."
+  type        = string
+  default     = "ap-south-1"
+}
+
 variable "resource_key" {
   description = "Short descriptor for the role purpose. e.g. app-role, lambda-exec."
   type        = string
