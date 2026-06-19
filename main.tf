@@ -104,14 +104,3 @@ variable "aws_region" {
   type        = string
   default     = "ap-south-1"
 }
-
-variable "environment" {
-  description = "Deployment environment. Must be prod or non-prod."
-  type        = string
-  default     = "non-prod"
-
-  validation {
-    condition     = contains(["prod", "non-prod"], var.environment)
-    error_message = "environment must be prod or non-prod."
-  }
-}
