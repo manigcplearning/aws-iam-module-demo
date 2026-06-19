@@ -133,7 +133,7 @@ data "aws_caller_identity" "current" {}
 resource "aws_iam_role" "this" {
   name               = local.role_name
   assume_role_policy = data.aws_iam_policy_document.trust.json
-  description        = "Role for ${var.app_name} — managed by Terraform"
+  description        = "Role for ${var.app_name} - managed by Terraform"
 
   tags = {
     Name        = local.role_name
@@ -166,7 +166,7 @@ output "role_name" {
 }
 
 output "role_arn" {
-  description = "ARN of the IAM role — use this when referencing from other resources."
+  description = "ARN of the IAM role  use this when referencing from other resources."
   value       = aws_iam_role.this.arn
 }
 
