@@ -99,7 +99,7 @@ variable "description" {
   default     = ""
 }
 
-variable "aws_region" {
+variable "region" {
   description = "AWS region for the demo account deployment."
   type        = string
   default     = "ap-south-1"
