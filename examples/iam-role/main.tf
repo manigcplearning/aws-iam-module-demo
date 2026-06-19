@@ -1,3 +1,38 @@
+# versions.tf
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.0"
+    }
+  }
+
+  # Terraform Cloud backend — workspace must be pre-configured in TFC UI
+  cloud {
+    organization = "demo-tf-org-gcp"
+
+    workspaces {
+      name = "aws-iam-module-demo"
+    }
+  }
+}
+
+
+# provider.tf — for OIDC auth TFC handles credentials automatically
+provider "aws" {
+  region = var.region
+  # No access_key or secret_key needed when using OIDC
+}
+
+# -------------------------------------------------------
+# Local: build the name once, use it everywhere
+# -------------------------------------------------------
+locals {
+  policy_name = "${var.app_name}-${var.drn}-${var.environment}-${var.resource_key}"
+}
+
 variable "app_name" {
   description = "Application name. Maximum 7 characters."
   type        = string
